@@ -1,100 +1,72 @@
-using namespace std;
 #include <iostream>
-#include <cmath>
-int main()
-{
-	int opcion;
-	string satelite;
+using namespace std;
+
+
+struct Planeta {
+	string nombre_planeta;
 	float distancia_al_sol;
 	float periodo_orbital;
 	float velocidad_orbital;
 	float inclinacion_orbital;
-	float excentricidad;
-	float periodo_orbital_satelite;
-	float inclinacion_orbital_satelite;
-	string nombre_planeta;
-	
-do{
-    cout<<"ingrese una opcion teniendo en cuenta:"<<endl;
-	cout<<"opcion 1= registro de satelite:"<<endl;
-	cout<<"opcion 2= editar informacion de un planeta:"<<endl;
-	cout<<"opcion 3= eliminar un satelite natural:"<<endl;
-	cout<<"opcion 4= consultar los planetas con una distancia media al sol< que la distancia dada:\n";
-	cout<<"opcion 5= consultar los planetas con una inclinacion orbital < a la del planeta seleccionado:\n";
-	cout<<"opcion 6= salir"<<endl;
+};
+int main()
+{
+	int opcion;
+	Planeta planetas[8] = {
+		{"Mercurio", 0, 0, 0, 0},
+		{"Venus", 0, 0, 0, 0},
+		{"Tierra", 0, 0, 0, 0},
+		{"Marte", 0, 0, 0, 0},
+		{"JC:piter", 0, 0, 0, 0},
+		{"Saturno", 0, 0, 0, 0},
+		{"Urano", 0, 0, 0, 0},
+		{"Neptuno", 0, 0, 0, 0}
+	};
 
-	cin>>opcion;
-    	switch(opcion)
-    	{
-    	case 1:
-    	{
-    		cout<<"registre el satelite:";
-    		cin>>satelite;
-    	}
-    	{
-    		cout<<"excentricidad:";
-    		cin>>excentricidad;
-    	}
-    	{
-    		cout<<"periodo orbital:";
-    		cin>>periodo_orbital_satelite;
-    	}
-    	{
-    		cout<<"inclinacion orbital:";
-    		cin>>inclinacion_orbital_satelite;
-    	}
-    	break;
-    
-    	case 2:
-    	{
-    		cout<<"registre la informacion del planeta\n";
-    		{
-    			cout<<"nombre:\n";
-    			cin>>nombre_planeta;
-    		}
-    		{
-    			cout<<"distancia media al sol(UA):\n";
-    			cin>>distancia_al_sol;
-    		}
-    		{
-    			cout<<"periodo orbital:\n";
-    			cin>>periodo_orbital;
-    		}
-    		{
-    			cout<<"velocidad orbital:\n";
-    			cin>>velocidad_orbital;
-    		}
-    		{
-    			cout<<"inclinacion orbital:\n";
-    			cin>>inclinacion_orbital;
-    		}
-    
-    	}
-    	break;
-    
-    	case 3:
-    	{
-    		cout<<"seleccione un satelite natural para eliminar:\n";
-    	}break;
-    
-    	case 4:
-    	{
-    		cout<<"Consultar los planetas con una distancia media al sol menor que la distancia dada\n";
-    	}break;
-    	case 5:
-    	{
-    		cout<<"Consultar los planetas con una inclinaciC3n orbital menor a la del planeta seleccionado\n";
-    	}break;
-    	case 6:
-    	{
-    		cout<<"saliendo del programa\n";
-    	}break;
-        default:
-        {
-        cout<<"seleccione una opcion valida\n";    
+
+
+
+	do {
+	cout<<"Vamos a editar la informacion de los planetas\n";
+	cout<<"ingrese una opcion segun el planeta que quiera editar\n";
+	cout<<"Opcion 0 salir del programa\n";
+	cout<<"Opcion 1 Mercurio\n";
+	cout<<"Opcion 2 Venus\n";
+	cout<<"Opcion 3 Tierra\n";
+	cout<<"Opcion 4 Marte\n";
+	cout<<"Opcion 5 Jupiter\n";
+	cout<<"Opcion 6 Saturno\n";
+	cout<<"Opcion 7 Urano\n";
+	cout<<"Opcion 8 Neptuno\n";
+	    cin>>opcion;
+        if(opcion<0 or opcion>8){
+        cout<<"Opcion invalida intente nuevamente\n";
+        continue;
         }
-    
-    	}
-}while(opcion!=6);
-    
-    }
+
+        int p=opcion-1;
+
+		switch (opcion) {
+		case 0:    
+		cout<<"Saliendo del programa\n";
+		break;
+		case 1:case 2:case 3:case 4:case 5:case 6:case 7:case 8:
+			cout<<"el planeta seleccionado es "<< planetas[p].nombre_planeta<<endl;
+			cout<<"ingrese la distancia al sol del planeta en UA\n";
+			cin>>planetas[p].distancia_al_sol;
+			cout<<"ingrese el periodo orbital\n";
+			cin>>planetas[p].periodo_orbital;
+			cout<<"ingrese la velocidad orbital\n";
+			cin>>planetas[p].velocidad_orbital;
+			cout<<"ingrese la inclinacion orbital\n";
+			cin>>planetas[p].inclinacion_orbital;
+
+			cout<<"Nombre:"<< planetas[p].nombre_planeta<<endl;
+			cout<<"Distancia al Sol:"<<planetas[p].distancia_al_sol<<" UA\n";
+			cout<<"Periodo orbital:"<<planetas[p].periodo_orbital<<" dias\n";
+			cout<<"Velocidad orbital:"<<planetas[p].velocidad_orbital<<" km/s\n";
+			cout<<"Inclinacion orbital:"<<planetas[p].inclinacion_orbital<<" grados\n";
+			break;
+		}
+	} while(opcion!=0);
+}
