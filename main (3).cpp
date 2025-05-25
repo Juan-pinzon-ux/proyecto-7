@@ -30,7 +30,7 @@ int main()
 	float periodo_orbital_satelite;
 	float inclinacion_orbital_satelite;
 	string nombre_planeta;
-	
+	int numero;
 
 	do {
 		cout<<"ingrese una opcion teniendo en cuenta:"<<endl;
@@ -47,22 +47,36 @@ int main()
 
 		case 1:
 		{
-			Satelite S1;
+		    cout<<"ingrese el numero de satelites que quiere registrar\n";
+		    int x;
+		    cin>>x;
+		    //lista de satelites que se pueden registrar
+			Satelite S1[x];
 
+for(int i=0;i<x;i++)
+{
 			cout<<"ingrese el nombre del satelite\n";
-			cin>>S1.Nombre_satelite;
+			cin>>S1[i].Nombre_satelite;
 			cout<<"ingrese la excentricidad del satelite\n";
-			cin>>S1.excentricidad;
+			cin>>S1[i].excentricidad;
 			cout<<"ingrese el periodo orbital del satelite\n";
-			cin>>S1.periodo_orbital_satelite;
+			cin>>S1[i].periodo_orbital_satelite;
 			cout<<"ingrese la inclinacion orbital del satelite\n";
-			cin>>S1.inclinacion_orbital_satelite;
+			cin>>S1[i].inclinacion_orbital_satelite;
 
-			cout<<"Nombre satelite:"<<S1.Nombre_satelite<<endl;
-			cout<<"excentricidad del satelite:"<<S1.excentricidad<<endl;
-			cout<<"periodo orbital del satelite:"<<S1.periodo_orbital_satelite<<endl;
-			cout<<"inclinacion orbital satelite"<<S1.inclinacion_orbital_satelite<<endl;
-		}
+if(S1[i].periodo_orbital_satelite<0)
+{cout<<"ERROR: el valor del periodo orbital debe ser mayor a 0, ingrese nuevamente a la opcion registro de satelite e ingrese bien los datos\n";}
+
+
+else if(S1[i].periodo_orbital_satelite>0)
+{
+			cout<<"Nombre satelite:"<<S1[i].Nombre_satelite<<endl;
+			cout<<"excentricidad del satelite:"<<S1[i].excentricidad<<endl;
+			cout<<"periodo orbital del satelite:"<<S1[i].periodo_orbital_satelite<<endl;
+			cout<<"inclinacion orbital satelite"<<S1[i].inclinacion_orbital_satelite<<endl;
+}
+}
+		}	
 		break;
 
 
@@ -70,43 +84,72 @@ int main()
 
 		case 2:
 		{
-		    Planeta P1;
+		     int p;
+		    
+		    cout<<"Ingrese la cantidad de planetas que quiere registrar:\n";
+		    cin>>p;
+		    //lista de palentas que se pueden registrar:
+		   Planeta P1[p];
+		    for(int i=0;i<p;i++)
+		    {
 		    
 			cout<<"registre la informacion del planeta\n";
 			{
 				cout<<"nombre:\n";
-				cin>>P1.nombre_planeta;
+				cin>>P1[i].nombre_planeta;
 			}
 			{
 				cout<<"distancia media al sol(UA):\n";
-				cin>>P1.distancia_al_sol;
+				cin>>P1[i].distancia_al_sol;
 			}
 			{
 				cout<<"periodo orbital:\n";
-				cin>>P1.periodo_orbital;
+				cin>>P1[i].periodo_orbital;
 			}
 			{
 				cout<<"velocidad orbital:\n";
-				cin>>P1.velocidad_orbital;
+				cin>>P1[i].velocidad_orbital;
 			}
 			{
 				cout<<"inclinacion orbital:\n";
-				cin>>P1.inclinacion_orbital;
+				cin>>P1[i].inclinacion_orbital;
 				
-				cout<<"nombre:"<<P1.nombre_planeta<<endl;
-				cout<<"distancia media al sol:"<<P1.distancia_al_sol<<endl;
-				cout<<"periodo orbital:"<<P1.periodo_orbital<<endl;
-				cout<<"velocidad orbital:"<<P1.velocidad_orbital<<endl;
-			    cout<<"inclinacion orbital:"<<P1.inclinacion_orbital<<endl;
+			if(P1[i].distancia_al_sol<0 or P1[i].periodo_orbital<0 or P1[i].velocidad_orbital<0 )	
+			{cout<<"ERROR: el valor de la distancia al sol,periodo orbital y velocidad orbital debe ser mayor a 0, verifique sus datos\n";}	
+				
+			else if(P1[i].distancia_al_sol>0 and P1[i].periodo_orbital>0 and P1[i].velocidad_orbital>0)
+			{	
+				cout<<"nombre:"<<P1[i].nombre_planeta<<endl;
+				cout<<"distancia media al sol:"<<P1[i].distancia_al_sol<<endl;
+				cout<<"periodo orbital:"<<P1[i].periodo_orbital<<endl;
+				cout<<"velocidad orbital:"<<P1[i].velocidad_orbital<<endl;
+			    cout<<"inclinacion orbital:"<<P1[i].inclinacion_orbital<<endl;
 			}
-
+			}
+}
 		}
 		break;
 
 		case 3:
 		{
-			cout<<"no hay ningun satelite registrado, no se puede eliminar:\n";
-		}
+			cout<<"El unico satelite natural de la tierra es la luna\n";
+			cout<<"desea eliminarlo?\n";
+			cout<<"Ingrese el numero 1 en caso de querer eliminarlo\n";
+			cout<<"Ingrese el numero 2 en caso de no querer eliminarlo\n";
+			cin>>numero;	
+			if(numero==1){
+			cout<<"Satelite eliminado con exito\n";
+			}
+			else if(numero==2){
+			cout<<"No se ha eliminado el Satelite\n";   
+			}
+			else{
+			cout<<"opcion invalida\n";    
+			}
+			
+			}	
+				
+		
 		break;
 
 		case 4:
